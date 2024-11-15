@@ -42,3 +42,19 @@ eliminarIndice (Node _ xs) 0 = xs
 eliminarIndice (Node x xs) n = if n < 0 || n >= longitud (Node x xs)
     then error "Indice fuera del rango permitido"
     else Node x (eliminarIndice xs (n -1))
+
+{-Ejercicio 7-}
+
+insertarIndice :: List a -> Int -> a -> List a 
+insetarIndice Void y z = (Node z Void)
+insertarIndice (Node x xs) y z = if y<0 || y >= longitud (Node x xs) then error "Indice fuera del rango permitido"
+                                 else if y==0 then Node z(Node x xs)
+                                 else Node x (insertarIndice xs (y - 1) z)
+
+{-Ejercicio 8-}
+
+recorrerLista :: List a -> Int -> List a 
+recorrerLista Void_ = Void
+recorrer (Node c xs) 0 = Node c xs
+recorrerLista (Node c xs) y = recorrerLista (insertarIndice xs(longitud xs) c) 
+(y-1)
