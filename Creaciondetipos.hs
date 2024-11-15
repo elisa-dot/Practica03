@@ -53,8 +53,7 @@ insertarIndice (Node x xs) y z = if y<0 || y >= longitud (Node x xs) then error 
 
 {-Ejercicio 8-}
 
-recorrerLista :: List a -> Int -> List a 
-recorrerLista Void_ = Void
-recorrer (Node c xs) 0 = Node c xs
-recorrerLista (Node c xs) y = recorrerLista (insertarIndice xs(longitud xs) c) 
-(y-1)
+recorrerLista :: List a -> Int -> List a
+recorrerLista Void x = Void
+recorrerLista (Node x xs) 0 = Node x xs
+recorrerLista (Node x xs) y = recorrerLista (insertarIndice xs(longitud xs) x) (y-1)
